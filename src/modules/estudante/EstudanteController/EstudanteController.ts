@@ -1,12 +1,13 @@
 import { Request, Response } from 'express'
+import { } from 'express'
 import { getRepository } from 'typeorm'
-import Conteudo from '../../models/entity/Conteudo'
+import Estudante from '../../../models/entity/Estudante'
 
-export default class ConteudoController {
+export default class EstudanteController {
 
     index = async (req: Request, res: Response) => {
         try {
-            const object = await getRepository(Conteudo).find()
+            const object = await getRepository(Estudante).find()
             return res.status(200).json(object)
         } catch (error) {
             console.log(`falha ao tentar ${error}`);
@@ -19,7 +20,7 @@ export default class ConteudoController {
         const { id } = req.params
 
         try {
-            const object = await getRepository(Conteudo).findOne(id)
+            const object = await getRepository(Estudante).findOne(id)
             return res.status(200).json(object)
         } catch (error) {
             console.log(`falha ao tentar encontrar o registro${error}`);
@@ -31,7 +32,7 @@ export default class ConteudoController {
         const { id } = req.params
         const data = req.body
         try {
-            const object = await getRepository(Conteudo).update(id, data)
+            const object = await getRepository(Estudante).update(id, data)
             return res.status(200).json(object)
         } catch (error) {
             console.log(`falha ao tentar ${error}`);
@@ -39,13 +40,10 @@ export default class ConteudoController {
             return res.status(400).json(error)
         }
     }
-
     store = async (req: Request, res: Response) => {
         const data = req.body
-        console.log(data);
-
         try {
-            const object = await getRepository(Conteudo).save(data)
+            const object = await getRepository(Estudante).save(data)
             return res.status(200).json(object)
         } catch (error) {
             console.log(`falha ao tentar persistir os dasdos${{ msgErro: error }}`);
@@ -56,7 +54,7 @@ export default class ConteudoController {
     delete = async (req: Request, res: Response) => {
         const { id } = req.params
         try {
-            const object = await getRepository(Conteudo).delete(id)
+            const object = await getRepository(Estudante).delete(id)
             return res.status(200).json({ msg: "Item removido" })
         } catch (error) {
             console.log(`falha ao tentar deletar o objeto ${error}`);

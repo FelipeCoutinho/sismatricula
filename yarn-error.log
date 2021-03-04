@@ -14,8 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: getaddrinfo ENOTFOUND registry.yarnpkg.com
-      at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:66:26)
+  Error: EPERM: operation not permitted, copyfile 'C:\Users\Venom\AppData\Local\Yarn\Cache\v6\npm-typescript-3.3.3333-171b2c5af66c59e9431199117a3bcadc66fdcfd6-integrity\node_modules\typescript\lib\typescript.js' -> 'D:\002.Desenvolvimento\node\typeorm\projeto\node_modules\typescript\lib\typescript.js'
 
 npm manifest: 
   {
@@ -30,18 +29,20 @@ npm manifest:
         "typescript": "3.3.3333"
      },
      "dependencies": {
+        "@types/jsonwebtoken": "^8.5.0",
         "bcrypt": "^5.0.1",
         "cors": "^2.8.5",
         "dotenv": "^8.2.0",
         "eslint": "^7.21.0",
         "express": "^4.17.1",
+        "jsonwebtoken": "^8.5.1",
         "multer": "^1.4.2",
         "mysql": "^2.14.1",
         "reflect-metadata": "^0.1.10",
         "typeorm": "0.2.25"
      },
      "scripts": {
-        "start": "ts-node src/index.ts",
+        "start": "node build/index.js",
         "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js",
         "dev": "nodemon src/index.ts"
      },

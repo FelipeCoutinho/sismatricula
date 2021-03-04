@@ -1,13 +1,13 @@
 import { Request, Response } from 'express'
 import { } from 'express'
 import { getRepository } from 'typeorm'
-import Estudante from '../../models/entity/Estudante'
+import Turma from '../../../models/entity/Turma'
 
-export default class EstudanteController {
+export default class TurmaController {
 
     index = async (req: Request, res: Response) => {
         try {
-            const object = await getRepository(Estudante).find()
+            const object = await getRepository(Turma).find()
             return res.status(200).json(object)
         } catch (error) {
             console.log(`falha ao tentar ${error}`);
@@ -20,7 +20,7 @@ export default class EstudanteController {
         const { id } = req.params
 
         try {
-            const object = await getRepository(Estudante).findOne(id)
+            const object = await getRepository(Turma).findOne(id)
             return res.status(200).json(object)
         } catch (error) {
             console.log(`falha ao tentar encontrar o registro${error}`);
@@ -32,7 +32,7 @@ export default class EstudanteController {
         const { id } = req.params
         const data = req.body
         try {
-            const object = await getRepository(Estudante).update(id, data)
+            const object = await getRepository(Turma).update(id, data)
             return res.status(200).json(object)
         } catch (error) {
             console.log(`falha ao tentar ${error}`);
@@ -43,7 +43,7 @@ export default class EstudanteController {
     store = async (req: Request, res: Response) => {
         const data = req.body
         try {
-            const object = await getRepository(Estudante).save(data)
+            const object = await getRepository(Turma).save(data)
             return res.status(200).json(object)
         } catch (error) {
             console.log(`falha ao tentar persistir os dasdos${{ msgErro: error }}`);
@@ -54,7 +54,7 @@ export default class EstudanteController {
     delete = async (req: Request, res: Response) => {
         const { id } = req.params
         try {
-            const object = await getRepository(Estudante).delete(id)
+            const object = await getRepository(Turma).delete(id)
             return res.status(200).json({ msg: "Item removido" })
         } catch (error) {
             console.log(`falha ao tentar deletar o objeto ${error}`);

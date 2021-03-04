@@ -9,7 +9,12 @@ export default class User {
     @Column({ length: 200 })
     nome: string;
 
-    @Column({ length: 100 })
+    @Column({ unique: true })
+    email: string;
+
+    @Column({
+        length: 100
+    })
     password: string;
 
     @CreateDateColumn()

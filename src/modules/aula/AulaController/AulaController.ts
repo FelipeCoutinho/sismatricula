@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 import { } from 'express'
 import { getRepository } from 'typeorm'
-import Aula from '../../models/entity/Aula'
+import Aula from '../../../models/entity/Aula'
 
 export default class AulaController {
 
